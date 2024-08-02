@@ -57,6 +57,7 @@ const updateContact = asyncHandler(async (req, res) => {
     contact.phone = phone;
 
     contact.save()
+    res.redirect('/contacts')
 })
 
 // delete contact
