@@ -8,6 +8,13 @@ const getAllContacts = asyncHandler( async (req, res) => {
         res.render('index', {contacts : contacts})
 })
 
+// View add Contact form
+// GET /contacts/add
+const addContactForm = (req, res) => {
+    res.render("add")
+}
+
+
 // Create contact
 // POST /contacts
 const createContact = asyncHandler(async (req, res) => {
@@ -16,13 +23,14 @@ const createContact = asyncHandler(async (req, res) => {
         if(!name || !email || !phone){
             return res.send('필수 값이 입력되지 않았습니다')
         }
-        res.send('Create Contacts')
+       
 
         const contact = await Contact.create({
             name, 
             email, 
             phone
         })
+        res.send('Create Contacts')
 })
 
 
@@ -31,7 +39,7 @@ const createContact = asyncHandler(async (req, res) => {
 const getContact = asyncHandler(async (req, res) => {
     // 연락처 상세 보기
     const contact = await Contact.findById(req.params.id)
-    res.status(200).send(contact);
+    res.render('update', {contact: contact})
   });
   
 
@@ -69,5 +77,6 @@ module.exports = {
     createContact, 
     getContact,
     updateContact,
-    deleteContact
+    deleteContact,
+    addContactForm
 }

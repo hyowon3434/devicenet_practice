@@ -1,14 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const {getAllContacts, createContact, getContact, updateContact, deleteContact} = require('../controllers/contactController')
+const {
+    getAllContacts,
+    createContact,
+    getContact, 
+    updateContact, 
+    deleteContact,
+    addContactForm
+} = require('../controllers/contactController')
 
 // 연락처 가져오기
 router
     .route('/')
     .get(getAllContacts)
+    
+
+router
+    .route('/add')
+    .get(addContactForm)
     .post(createContact)
-
-
+    
 router
     .route('/:id')
     .get(getContact)
