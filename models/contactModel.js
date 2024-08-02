@@ -18,6 +18,8 @@ const contactSchema = new mongoose.Schema(
     }
 )
 
+
+
 // 스키마 -> 모델
 // mongoose.model(모델명, 스키마명)
 const Contact = mongoose.model('Contact', contactSchema)
